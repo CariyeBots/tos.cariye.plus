@@ -1,63 +1,38 @@
-$total: 144;
-$time: 4;
-$height: 400;
-$percent: .69444%;
-$dotSize: .9;
-
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
 body {
-  background: black;
-  overflow: hidden;
+  height: 100vh;
+   background: linear-gradient(90deg,#e52e71,#ff8a00);
+
 }
 
-.wrap {
-  position: relative;
-  height: 100%;
+.slider-thumb::before {
+	position: absolute;
+	content: "";
+	left: 30%;
+	top: 20%;
+	width: 450px;
+	height: 450px;
+	background: #17141d;
+	border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+	will-change: border-radius, transform, opacity;
+	animation: sliderShape 5s linear infinite;
+	display: block;
+	z-index: -1;
+	-webkit-animation: sliderShape 5s linear infinite;
 }
-
-.c {
-  position: relative;
-  height: $height+px;
-  width: $percent;
-  margin-top: -$height+px;
-  animation: drop $time+s infinite ease-in;
-  &:after {
-    content: "";
-    position: absolute;
-    width: $dotSize+vw;
-    height: $dotSize+vw;
-    border-radius: 50%;
-    left: 50%;
-    bottom: -($dotSize/2)+vw;
-    margin-left: -($dotSize/2)+vw;
+@keyframes sliderShape{
+  0%,100%{
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
   }
-}
-
-@for $i from 1 through $total {
-  $hue: (300/$total) * $i;
-  .c:nth-child(#{$i}){
-    left: ($i - 1) * $percent;
-    background-image: linear-gradient( to bottom, black, hsla($hue, 100%, 50%, .8));
-    animation-delay: random($total) * ($time/$total) * -1s;
-    &:after {
-      background: hsla($hue, 100%, 50%, 1);
-    }
+  34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
   }
-}
-
-@keyframes drop {
-  80% {
-    opacity: 1;
+  50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
   }
-  100% {
-    transform: translate3d(0, 150vh, 0);
-    opacity: 0;
+  67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
   }
 }
