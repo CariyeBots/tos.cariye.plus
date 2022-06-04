@@ -1,38 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+
 body {
+  font-family: 'Poppins', sans-serif;
+}
+
+section{
+  width: 100%;
   height: 100vh;
-   background: linear-gradient(90deg,#e52e71,#ff8a00);
-
+  background: linear-gradient(-45deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);;
+  background-size: 400% 400%;
+  position: relative;
+  animation: animate 7.5s ease-in-out infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.slider-thumb::before {
-	position: absolute;
-	content: "";
-	left: 30%;
-	top: 20%;
-	width: 450px;
-	height: 450px;
-	background: #17141d;
-	border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
-	will-change: border-radius, transform, opacity;
-	animation: sliderShape 5s linear infinite;
-	display: block;
-	z-index: -1;
-	-webkit-animation: sliderShape 5s linear infinite;
+h1{
+  color: #fff;
+  background: rgba(255,255,255,.2);
+  padding: 20px;
+  font-size: 50px;
+  border-radius: 10px;
 }
-@keyframes sliderShape{
-  0%,100%{
-  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
-  }
-  34%{
-      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
-    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+
+p{
+  color: #cc0000;
+  background: #ffcccc;
+  font-size: 20px;
+}
+
+@keyframes animate{
+  0%{
+    background-position: 0 50%;
   }
   50%{
-    transform: translate3d(0,0,0) rotateZ(0.01deg);
+    background-position: 100% 50%;
   }
-  67%{
-    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
-    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
+  100%{
+    background-position: 0 50%;
   }
 }
